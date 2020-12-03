@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>calculator</title>
+	<meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<script src='https://kit.fontawesome.com/a076d05399.js'></script>
+</head>
+<body>
+	<div class="container mx-40 px-20">
+	<div class="row" >
+        <div class="col-sm-5 bg-dark  " >
+        	
+        			<div class=" form-group m-3">
+        			    <textarea class="form-control" rows="2" name="text" id="answer" value="0" style="text-align: right;font-size: 30px;"></textarea>
+        			</div>
+        
+
+	<div class="row m-3 ">
+		<div class="col-6 p-1 ">
+		    <button type="button" class="btn btn-linverse btn-block" style="background-color: orange;border:0;" onclick="operator('=')"><i class="fas fa-equals text-light"></i></button>
+	    </div>
+	    <div class="col-6 p-1">
+			<button type="button" class="btn btn-block text-light" style="background-color: orange;border:0;" onclick="clr()" ><b>AC</b></button>
+		</div>
+	</div>
+
+	<div class="row m-3 ">
+		<div class="col-3 p-1 ">
+		    <button type="button" class="btn btn-block bg-info text-white"  onclick="operand('0')"><b>0</b></button>
+	    </div>
+	    <div class="col-3 p-1">
+			<button type="button" class="btn btn-info btn-block"  onclick="operator('%')"><b>%</b></button>
+		</div>
+	    <div class="col-3 p-1">
+		<button type="button" class="btn btn-info btn-block" onclick="operand('.')" ><b>.</b></button>
+		</div>
+		<div class="col-3 p-1">
+			<button type="button" class="btn btn-info btn-block" onclick="operator('+')"><i class="fas fa-plus"></i></button>
+		</div>
+		
+	</div>
+
+
+	<div class="row m-3">
+		<div class="col-3 p-1">
+		    <button type="button" class="btn btn-secondary btn-block" value="7" onclick="operand('7')" ><b>7</b></button>
+	    </div>
+	    <div class="col-3 p-1">
+		<button type="button" class="btn btn-secondary btn-block" onclick="operand('8')"><b>8</b></button>
+		</div>
+		<div class="col-3 p-1">
+			<button type="button" class="btn btn-secondary btn-block" onclick="operand('9')"><b>9</b></button>
+		</div>
+		<div class="col-3 p-1">
+			<button type="button" class="btn btn-info btn-block" onclick="operator('-')"><i class="fas fa-minus"></i></button>
+		</div>
+	</div>
+
+
+	<div class="row m-3">
+		<div class="col-3 p-1">
+		    <button type="button" class="btn btn-secondary btn-block" onclick="operand('4')"><b>4</b></button>
+	    </div>
+	    <div class="col-3 p-1">
+		<button type="button" class="btn btn-secondary btn-block" onclick="operand('5')"><b>5</b></button>
+		</div>
+		<div class="col-3 p-1">
+			<button type="button" class="btn btn-secondary btn-block" onclick="operand('6')"><b>6</b></button>
+		</div>
+		<div class="col-3 p-1">
+			<button type="button" class="btn btn-info btn-block" onclick="operator('*')"><i class="fas fa-times"></i></button>
+		</div>
+	</div>
+
+
+	<div class="row m-3">
+		<div class="col-3 p-1">
+		    <button type="button" class="btn btn-secondary btn-block" onclick="operand('3')"><b>3</b></button>
+	    </div>
+	    <div class="col-3 p-1">
+		<button type="button" class="btn btn-secondary btn-block" onclick="operand('2')"><b>2</b></button>
+		</div>
+		<div class="col-3 p-1">
+			<button type="button" class="btn btn-secondary btn-block" onclick="operand('1')"><b>1</b></button>
+		</div>
+		<div class="col-3 p-1">
+			<button type="button" class="btn btn-info btn-block" onclick="operator('/')"><i class="fas fa-divide"></i></button>
+		</div>
+	</div>
+
+
+	
+</div>
+</div>
+</div>
+
+	
+	<script>
+
+var display='';
+var oldval=0;
+var opt='+';
+var result=0;
+ 
+ function operand(number)
+ { 
+   display+=number;
+   document.getElementById('answer').value=display;
+ }
+
+ function operator(operation)
+ { console.log(display);
+ 	if (display=='')
+ 	 {
+ 	 	document.getElementById('answer').value="0";
+ 	 }
+ 	else{
+ 	switch(opt)
+ 	{
+ 		case '+':
+		 		result=parseFloat(parseFloat(oldval)+parseFloat(display));
+		 		break;
+
+ 		case '-':
+		 		result=parseFloat(parseFloat(oldval)-parseFloat(display));
+		 		break;
+
+ 		case '*':
+		 		result=parseFloat(parseFloat(oldval)*parseFloat(display));
+		 		break;
+
+ 		case '/':
+		 		result=parseFloat(parseFloat(oldval)/parseFloat(display));
+		 		break;
+
+ 		case '%':
+		 		result=parseFloat(parseFloat(oldval)%parseFloat(display));
+		 		break;
+
+ 		case '=':
+		 		document.getElementById('answer').value=oldval;
+		 		break;
+		 
+ 		
+ 	}
+ 	 document.getElementById('answer').value=result
+ 	 display='';
+ 	 opt=operation;
+ 	 oldval=result;
+ 	}
+
+ }
+ /*clearscreen*/
+function clr()
+{
+document.getElementById("answer").value = "";
+display='';
+opt='+';
+oldval=0;
+
+}
+/*backspace*/
+/*function back()
+{
+	var a=document.getElementById("answer").value;
+
+	document.getElementById("answer").value= a.substring(0,a.length-1);
+	display=parseInt(display/10);
+}*/
+</script>
+
+
+</body>
+</html>
